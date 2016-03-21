@@ -56,11 +56,9 @@ There are several ways of using Docker volumes to persist the settings and datab
 mkdir kamon-grafana-service
 cd kamon-grafana-service
 mkdir -p data/whisper
-mkdir -p data/elasticsearch
 mkdir -p data/grafana
 mkdir -p log/graphite
 mkdir -p log/graphite/webapp
-mkdir -p log/elasticsearch
 chmod -R 777 *
 
 docker run \
@@ -71,10 +69,8 @@ docker run \
    --publish=8126:8126 \
    --name kamon-grafana-dashboard \
    --volume=$(pwd)/data/whisper:/opt/graphite/storage/whisper \
-   --volume=$(pwd)/data/elasticsearch:/var/lib/elasticsearch \
    --volume=$(pwd)/data/grafana:/opt/grafana/data \
    --volume=$(pwd)/log/graphite:/opt/graphite/storage/log \
-   --volume=$(pwd)/log/elasticsearch:/var/log/elasticsearch \
    kamon/grafana_graphite
 ```
 
